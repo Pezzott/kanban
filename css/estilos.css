@@ -1,0 +1,234 @@
+/* Estilos Gerais */
+:root {
+    --background-color: #f0f2f5;
+    --header-footer-bg: #34495e;
+    --sidebar-bg: #2c3e50;
+    --btn-primary-bg: #3498db;
+    --btn-primary-hover: #2980b9;
+    --btn-add-task-bg: #2ecc71;
+    --btn-add-task-hover: #27ae60;
+    --column-bg: #ecf0f1;
+    --modal-overlay: rgba(52, 73, 94, 0.8);
+    --modal-bg: #ffffff;
+    --font-color: #34495e;
+    --font-color-light: #ffffff;
+    --font-secondary: #7f8c8d;
+    --border-radius: 4px;
+    --box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--font-color);
+}
+
+header,
+footer {
+    background-color: var(--header-footer-bg);
+    color: var(--font-color-light);
+    text-align: center;
+    padding: 15px 0;
+    box-shadow: var(--box-shadow);
+}
+
+h1,
+h2 {
+    margin: 0;
+    font-weight: normal;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    background-color: var(--sidebar-bg);
+    padding: 10px;
+    transition: width 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-hidden {
+    width: 0;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+.add-task-btn {
+    background-color: var(--btn-add-task-bg);
+    color: var(--font-color-light);
+    padding: 10px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.add-task-btn:hover {
+    background-color: var(--btn-add-task-hover);
+}
+
+/* Kanban Board */
+#kanban-board {
+    margin-left: 260px;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.kanban-column {
+    background-color: var(--column-bg);
+    flex: 1;
+    margin: 0 10px;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.kanban-column h2 {
+    border-bottom: 2px solid var(--header-footer-bg);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.tasks-container {
+    min-height: 300px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--modal-overlay);
+}
+
+.modal-content {
+    background-color: var(--modal-bg);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    width: 50%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.close-button {
+    color: var(--font-secondary);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--font-color);
+    text-decoration: none;
+}
+
+/* Form Styles */
+#task-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#task-form input[type=text],
+#task-form textarea,
+#task-form input[type=date] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+}
+
+#task-form button[type=submit],
+#cancel-task-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+#task-form button[type=submit] {
+    background-color: var(--btn-primary-bg);
+    color: var(--font-color-light);
+}
+
+#task-form button[type=submit]:hover {
+    background-color: var(--btn-primary-hover);
+}
+
+#cancel-task-btn {
+    background-color: #e74c3c;
+    color: var(--font-color-light);
+}
+
+#cancel-task-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Hover effects for task cards */
+.task {
+    background-color: var(--modal-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.task:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        box-shadow: none;
+    }
+
+    #kanban-board {
+        margin-left: 0;
+        flex-direction: column;
+    }
+
+    .kanban-column {
+        margin-bottom: 20px;
+    }
+
+    .modal-content {
+        width: 80%;
+        margin: 10% auto;
+    }
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--header-footer-bg);
+    color: var(--font-color-light);
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
